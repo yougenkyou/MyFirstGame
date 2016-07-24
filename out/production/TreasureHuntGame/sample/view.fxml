@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#moveOnKeyPressed" onMouseClicked="#onMouseClicked" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Button layoutX="525.0" layoutY="537.0" mnemonicParsing="false" onAction="#moveLeft" onMouseClicked="#moveLeft" prefHeight="31.0" prefWidth="65.0" text="left" />
+      <Button layoutX="590.0" layoutY="537.0" mnemonicParsing="false" onAction="#moveDown" text="down" />
+      <Button layoutX="647.0" layoutY="537.0" mnemonicParsing="false" onAction="#moveRight" prefHeight="31.0" prefWidth="65.0" text="right" />
+      <Button layoutX="590.0" layoutY="506.0" mnemonicParsing="false" onAction="#moveUp" prefHeight="31.0" prefWidth="57.0" text="up" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="105.0" layoutY="135.0" onKeyPressed="#moveOnKeyPressed" radius="37.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Button layoutX="36.0" layoutY="515.0" mnemonicParsing="false" onAction="#startGame" prefHeight="53.0" prefWidth="122.0" text="START">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
