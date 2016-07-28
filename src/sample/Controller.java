@@ -15,7 +15,7 @@ public class Controller {
     @FXML
     Shape circle;
     Shape blackTreasure;
-    Shape treasure1;
+    Shape treasure1; // its not neccessery
     Shape treasure2;
     Shape treasure3;
     Shape treasure4;
