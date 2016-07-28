@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#moveOnKeyPressed" onMouseClicked="#onMouseClicked" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#moveOnKeyPressed" onMouseClicked="#onMouseClicked" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <children>
       <Circle fx:id="circle" fill="DODGERBLUE" layoutX="105.0" layoutY="135.0" onKeyPressed="#moveOnKeyPressed" radius="37.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
       <Button layoutX="36.0" layoutY="515.0" mnemonicParsing="false" onAction="#startGame" prefHeight="53.0" prefWidth="122.0" text="START">
