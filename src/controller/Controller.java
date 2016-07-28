@@ -1,12 +1,13 @@
 package controller;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 import javafx.scene.input.MouseEvent;
@@ -14,14 +15,15 @@ import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Observable;
 
 public class Controller {
 
     @FXML Pane mainScene;
+    @FXML Button start;
     @FXML Shape player;
     @FXML Shape blackTreasure;
     @FXML Label score;
+    @FXML VBox ui;
 
 
 
@@ -41,7 +43,8 @@ public class Controller {
         player.setLayoutX(randomNumber(0, 799.0));
         player.setLayoutY(randomNumber(0, 599.0));
         player.setVisible(true);
-        }
+        ui.getChildren().remove(start);
+    }
 
 
     public void onMouseClicked(MouseEvent mouseEvent) {
