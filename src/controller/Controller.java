@@ -1,82 +1,95 @@
 package controller;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Observable;
 
 public class Controller {
 
-    @FXML
-    Shape circle;
-    Shape blackTreasure;
-    Shape treasure1; // its not neccessery
-    Shape treasure2;
-    Shape treasure3;
-    Shape treasure4;
-    Label score;
+    @FXML Pane mainScene;
+    @FXML Shape player;
+    @FXML Shape blackTreasure;
+    @FXML Label score;
+
 
 
     private double positionX;
     private double positionY;
-    private ArrayList<Shape> treasures = new ArrayList<Shape>();
+
+    @FXML
+    public void initialize(){
+        System.out.println(mainScene.getChildren().size());
+    }
 
     public static int randomNumber(double from, double to) {
         return (int) (Math.random() * (to + 1 - from) + from);
     }
 
     public void startGame() {
-        circle.setLayoutX(randomNumber(0, 799.0));
-        circle.setLayoutY(randomNumber(0, 599.0));
-        circle.setVisible(true);
+        player.setLayoutX(randomNumber(0, 799.0));
+        player.setLayoutY(randomNumber(0, 599.0));
+        player.setVisible(true);
         }
 
 
     public void onMouseClicked(MouseEvent mouseEvent) {
         if (mouseEvent.getEventType() == MouseEvent.MOUSE_CLICKED) {
-            circle.setLayoutX(mouseEvent.getSceneX());
-            circle.setLayoutY(mouseEvent.getSceneY());
+            player.setLayoutX(mouseEvent.getSceneX());
+            player.setLayoutY(mouseEvent.getSceneY());
+            checkIntersections();
         }
     }
 
     public void moveOnKeyPressed(KeyEvent multipleEvent) {
         KeyCode keyPressed = multipleEvent.getCode();
         if (keyPressed == KeyCode.UP || keyPressed == KeyCode.W) {
-            positionY = circle.getLayoutY() - 10;
-            circle.setLayoutY(positionY);
+            positionY = player.getLayoutY() - 10;
+            player.setLayoutY(positionY);
+            checkIntersections();
         } else if (keyPressed == KeyCode.DOWN || keyPressed == KeyCode.S) {
-            positionY = circle.getLayoutY() + 10;
-            circle.setLayoutY(positionY);
+            positionY = player.getLayoutY() + 10;
+            player.setLayoutY(positionY);
+            checkIntersections();
         } else if (keyPressed == KeyCode.LEFT || keyPressed == KeyCode.A) {
-            positionX = circle.getLayoutX() - 10;
-            circle.setLayoutX(positionX);
+            positionX = player.getLayoutX() - 10;
+            player.setLayoutX(positionX);
+            checkIntersections();
         } else if (keyPressed == KeyCode.RIGHT || keyPressed == KeyCode.D) {
-            positionX = circle.getLayoutX() + 10;
-            circle.setLayoutX(positionX);
+            positionX = player.getLayoutX() + 10;
+            player.setLayoutX(positionX);
+            checkIntersections();
         }
     }
 
-    private void findingTreasure(Shape myTreasure) {
-        boolean treasureDetected = false;
-        int scoreCount = 0;
-        for (Shape static_bloc : treasures) {
-            if (static_bloc != myTreasure) {
-                scoreCount = scoreCount;
-                score.setText(String.valueOf(scoreCount));
-                if (myTreasure.getBoundsInParent().intersects(static_bloc.getBoundsInParent())) {
-                    treasureDetected = true;
+    private void checkIntersections() {
+        List<Node> removableNodes = new ArrayList<>();
+        for (Node gameObject: mainScene.getChildren()) {
+            if (gameObject.getClass() == Circle.class && !Objects.equals(gameObject.getId(), "player")){
+                Shape intersection = Circle.intersect(player, (Circle) gameObject);
+                if (intersection.getBoundsInLocal().getWidth() != -1){
+                    score.setText(String.valueOf(Integer.parseInt(score.getText()) + 1));
+                    removableNodes.add(gameObject);
                 }
             }
         }
-        if (treasureDetected){
-            scoreCount += 1;
-            score.setText(String.valueOf(scoreCount));
+        if(!removableNodes.isEmpty()){
+            for (Node node : removableNodes) {
+                mainScene.getChildren().remove(node);
+            }
         }
+
     }
 }
 
