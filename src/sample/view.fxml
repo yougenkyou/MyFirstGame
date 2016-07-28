@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
@@ -14,5 +15,20 @@
             <Font size="24.0" />
          </font>
       </Button>
+      <Circle fx:id="blackTreasure" fill="#121314" layoutX="63.0" layoutY="70.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="treasure3" fill="#69ff1f" layoutX="334.0" layoutY="327.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="treasure1" fill="#ffb01f" layoutX="348.0" layoutY="85.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="treasure4" fill="#ff1fd5" layoutX="692.0" layoutY="527.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="treasure2" fill="#ff1f2d" layoutX="682.0" layoutY="172.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="score" alignment="CENTER" layoutX="710.0" layoutY="33.0" prefHeight="46.0" prefWidth="54.0" text="0" textAlignment="CENTER">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="645.0" layoutY="33.0" prefHeight="47.0" prefWidth="74.0" text="Score:">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
